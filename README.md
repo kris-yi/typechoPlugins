@@ -1,1 +1,1 @@
-"# typecho²å¼þ¼¯" 
+"# typechoæ’ä»¶é›†" 
