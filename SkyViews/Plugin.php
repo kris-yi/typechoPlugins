@@ -66,11 +66,18 @@ class SkyViews_Plugin implements Typecho_Plugin_Interface
      * 插件实现方法
      *
      * @access public
+     * @param null $archive
      * @return void
      */
-    public static function views()
+    public static function views($archive = null)
     {
-        echo "<li>浏览: ".self::$count."</li>";
+        if ($archive) {
+            $db = self::getDb();
+            $query = $db->select("count(*) as count")->from("table.views")->where("cid = $archive->cid");
+            $result = $db->fetchObject($query);
+            self::$count = $result->count;
+        }
+        echo "<li>浏览: " . self::$count . "</li>";
     }
 
     /**
